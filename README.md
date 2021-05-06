@@ -2,9 +2,8 @@
     ./Scripts/activate
     pip install -r requirements.txt
 
-##Virtual Environment
-    #
-    python -m venv c:\path\to\myenv
+## Virtual Environment
+    # python -m venv c:\path\to\myenv
 
 
 ## Initializing the Database
