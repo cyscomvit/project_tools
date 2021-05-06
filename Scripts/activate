@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="E:\EH\project\ipscanner\ipscan"
+VIRTUAL_ENV="c:\Users\user\Desktop\project-tools\project-tools"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -54,7 +54,7 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    PS1="(ipscan) ${PS1:-}"
+    PS1="(project-tools) ${PS1:-}"
     export PS1
 fi
 
