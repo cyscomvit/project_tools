@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}  
+Register Page
+{% endblock %}
+
+{% block content %}
+<body class='text-center'>
+<h1>Register For Project-Tools! </h1>
+<div class='container'>
+    <form method="POST" class=form-register style="color: white;">
+        {{ form.hidden_tag() }} 
+        {{ form.username.label() }}
+        {{ form.username(class="form-control",placeholder="User Name") }}
+        {{ form.email.label() }}
+        {{ form.email(class="form-control",placeholder="Email") }}
+        {{ form.password1.label() }}
+        {{ form.password1(class="form-control",placeholder="Password") }}
+        {{ form.password2.label() }}
+        {{ form.password2(class="form-control",placeholder="Confirm Password") }}
+        <br>
+        {{ form.submit(class="btn btn-lg btn-primary") }}
+        <br>
+        <div class="checkbox mb-3">
+            <h6>Already have an accout?</h6>
+            <a class = "btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Register</a>
+        </div>
+    </form>
+</div>
+</body>
+{% endblock %}
