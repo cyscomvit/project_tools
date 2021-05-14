@@ -6,16 +6,10 @@
     # python -m venv c:\path\to\myenv
 
 
-## Initializing the Database
-
-    # Create DB tables and populate the roles and users tables
-    python manage.py init_db
-
-
 ## Running the app
 
-    # Start the Flask development web server
-    python manage.py runserver
+    # Go to Dashboard directory and execute:
+    py run.py
 
 
 You can make use of the following users:
