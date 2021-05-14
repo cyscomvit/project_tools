@@ -8,8 +8,8 @@
 
 ## Running the app
 
-    # Go to Dashboard directory and execute:
-    py run.py
+    # cd Dashboard
+    # py run.py
 
 
 You can make use of the following users:
