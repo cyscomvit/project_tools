@@ -1,7 +1,7 @@
-# start virtual env
-# EXPORT FLASK_APP=run
-# flask run
+### start virtual env
+
+### flask run
 
 
-# NMAP
-- Input: port,type_scan
+### NMAP
+- Input: port:string,type_scan:string
