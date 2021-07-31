@@ -11,5 +11,5 @@ db=SQLAlchemy(app)
 
 bcrypt= Bcrypt(app)
 login_manager= LoginManager(app)
-from Dashboard import route
+from project_tools.Dashboard import route
 

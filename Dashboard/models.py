@@ -1,7 +1,7 @@
 from enum import unique
 from sqlalchemy.orm import backref
-from Dashboard import db
-from Dashboard import bcrypt,login_manager
+from project_tools.Dashboard import db
+from project_tools.Dashboard import bcrypt,login_manager
 from flask_login import UserMixin
 
 @login_manager.user_loader  

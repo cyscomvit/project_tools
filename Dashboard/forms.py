@@ -1,7 +1,7 @@
 from wtforms.fields.simple import PasswordField
 from wtforms import validators
 from flask_wtf import FlaskForm
-from Dashboard.models import User
+from project_tools.Dashboard.models import User
 from wtforms import StringField,PasswordField,SubmitField
 from wtforms.validators import Length,EqualTo,Email,DataRequired, ValidationError
 

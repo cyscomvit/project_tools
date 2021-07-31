@@ -1,9 +1,10 @@
-from Dashboard import app
+from project_tools.Dashboard import app
 from flask import render_template,redirect,url_for,flash
-from Dashboard.models import Item,User
-from Dashboard.forms import RegistrationForm,LoginForm
-from Dashboard import db
+from project_tools.Dashboard.models import Item,User
+from project_tools.Dashboard.forms import RegistrationForm,LoginForm
+from project_tools.Dashboard import db
 from flask_login import login_user
+
 @app.route('/')
 @app.route('/home/') 
 def home_page():
