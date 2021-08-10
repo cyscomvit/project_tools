@@ -7,10 +7,14 @@ def synack_scan(p):
     res = { "info": "", "IP Status": "", "Protocols": "", "Open Ports": "" }
     scanner.scan(p, '1-1024', '-v -sS');
 
-    res["info"] = jsonify(scanner.scaninfo())  
-    res["IP Status"] = jsonify(scanner[p].state())
-    res["Protocols"] = jsonify(scanner[p].all_protocols())
-    res["Open Ports"] = jsonify(scanner[p]['tcp'].keys())
+    #res["info"] = jsonify(scanner.scaninfo())
+    res["info"] = scanner.scaninfo()   
+    #res["IP Status"] = jsonify(scanner[p].state())
+    res["IP Status"] = scanner[p].state()
+    #res["Protocols"] = jsonify(scanner[p].all_protocols())
+    res["Protocols"] = scanner[p].all_protocols()
+    #res["Open Ports"] = jsonify(scanner[p]['tcp'].keys())
+    res["Open Ports"] = scanner[p]['tcp'].keys()
 
     return res
 
@@ -60,7 +64,8 @@ def ping_scan(p):
     if counter == 0:
         res["info"] = "Either the host is down or the system is private"
 
-    res["Info"] = jsonify(info)
+    #res["Info"] = jsonify(info)
+    res["Info"] = info
 
     return res
 

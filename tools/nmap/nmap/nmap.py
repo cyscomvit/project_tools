@@ -129,11 +129,7 @@ class PortScanner(object):
                 self._nmap_path = nmap_path  # save path
                 break
         else:
-            raise PortScannerError(
-                'nmap program was not found in path. PATH is : {0}'.format(
-                    os.getenv('PATH')
-                )
-            )
+            raise PortScannerError('nmap program was not found in path. PATH is : {0}'.format(os.getenv('PATH')))
 
         self._nmap_last_output = bytes.decode(p.communicate()[0])  # sav stdout
         for line in self._nmap_last_output.split(os.linesep):

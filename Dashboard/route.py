@@ -1,19 +1,58 @@
 from project_tools.Dashboard import app
-from flask import render_template,redirect,url_for,flash
+from flask import render_template,redirect,url_for,flash,request,jsonify
 from project_tools.Dashboard.models import Item,User
 from project_tools.Dashboard.forms import RegistrationForm,LoginForm
 from project_tools.Dashboard import db
+from project_tools.tools.nmap.main import nmap_route
 from flask_login import login_user
+import json
 
+
+def table(dic,stri):
+    stri+="<table border='1'>\n"
+    stri+="<colgroup>"
+    stri+="<col style='background-color:#00CED1'>"
+    stri+="<col style='background-color:#4CC417'>"
+    stri+="</colgroup>\n"
+    for keys in dic:
+        stri+="<tr>\n"
+        if type(dic[keys]) is dict:
+            stri+="<td>"+keys+"</td>\n"
+            stri+="<td>"+str(table(dic[keys],""))+"</td>\n"
+        else:
+            stri+="<td>"+keys+"</td>\n"
+            if(type(dic[keys])!=str):
+                dic[keys]=list(dic[keys])
+            print(type(dic[keys]))
+            stri+="<td>"+str(dic[keys])+"</td>\n"
+        stri+="</tr>\n"
+    stri+="</table>\n"
+    return stri
+
+    '''{% for keys in results %}
+{%  if results.keys is mapping %}
+<tr><td>{{   keys }}</td>
+<td>{{ results.keys }}</td><tr>
+{% else %}
+<tr><td>{{ keys }} </td>
+<td>{{ fun(results.keys,"") | safe }}</td></tr>
+'''
 @app.route('/')
 @app.route('/home/') 
 def home_page():
     return render_template('home.html')
 
-@app.route('/dashboard')
+@app.route('/dashboard',methods=['GET','POST'])
 def dashboard_page():
     items=Item.query.all()
-    return render_template('dashboard.html',items=items)
+    result={}
+    show=False
+    if request.method=="POST":
+        if request.form["nmap"]=="sub":
+            result = nmap_route()
+            show=True  
+            print(result)
+    return render_template('dashboard.html',items=items,results=result,show=show,fun=table)
 
 @app.route('/register',methods=['GET','POST'])
 def register_page():
@@ -49,3 +88,9 @@ def login_page():
                
     return render_template('login.html',form=form)
 
+'''@app.route('/nmap',methods=['POST','GET'])
+def nmapexec():
+    print('called!')
+    
+    print(res)
+    return redirect(url_for('dashboard_page',result=res))'''

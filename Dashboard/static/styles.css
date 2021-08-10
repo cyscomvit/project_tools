@@ -1,0 +1,40 @@
+.options_nmap_wrapper {
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  color: black;
+}
+.options_nmap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 320px;
+  background-color: white;
+  border-radius: 5px;
+}
+.fa-times {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: black;
+  font-size: 2rem;
+  z-index: 100;
+}
+.fa-times:hover {
+  cursor: pointer;
+}
+.heading {
+  border-bottom: 1px solid gray;
+}
+.label {
+  font-size: 1.3rem;
+}

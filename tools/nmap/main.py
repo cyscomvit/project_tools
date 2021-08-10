@@ -1,19 +1,22 @@
 from project_tools.tools.nmap import utils
 from project_tools.tools.nmap.parser import parse
-from flask import request, jsonify
+from flask import request, jsonify, make_response, json
 
 def nmap_route():
     # port,type
-    body = request.get_json()
+    body = request#.json#get_json()
     
     print(body)
 
-    port = body.get('port')
-    type_scan = body.get('type')
+    port = body.form['port']
+    type_scan = body.form['type']
     
     res = nmap(port,type_scan)
     
-    return jsonify(res)
+    #return jsonify(res)
+    return res
+    #return make_response(jsonify(res), 200)
+    #return make_response(json.dumps(res), 200)
 
 def nmap(port,type_scan):
 
@@ -34,6 +37,11 @@ def nmap(port,type_scan):
     elif type_scan == '5':
         res = utils.ping_scan(port)
 
-    print("RESULT:",res,type(res))    
-    return { "status": "success", "payload": jsonify(res) }  
+    print("RESULT:",res,type(res))
+    #print(json.dumps(res))    
+    #return { "status": "success", "payload": jsonify(res) }
+    return { "status": "success", "payload": res }
+    #return { "status": "success", "payload": make_response(jsonify(res), 200)}
+    #return { "status": "success", "payload": json.dumps(res) }
+
     

@@ -1,6 +1,6 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block title %}
-    Tools page
+Tools page
 {% endblock %}
 
 {% block content %}
@@ -19,11 +19,86 @@
             <td>{{item.name}}</td>
             <td>
                 <button class="btn btn-outline btn-info">More inofo</button>
-                <button class="btn btn-outline btn-success">Access item</button>
+                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_nmap_wrapper')">Access
+                    item</button>
 
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% if show==True %}
+<b> Dictionary output </b><br>
+<code>{{ results | safe }}</code>
+<center>
+<b>Table output</b>
+<table border="1">
+  <colgroup>
+    <col style="background-color:#00CED1">
+    <col style="background-color:#4CC417">
+  </colgroup>
+{% for keys in results %}
+{%  if results[keys] is mapping %}
+<tr><td>{{  keys }}</td>
+<td>{{ fun(results[keys],"") | safe }}</td></tr>
+<!---<td>{{ results[keys] | safe }}</td></tr>--->
+{% else %}
+<tr><td>{{ keys }} </td>
+<td>{{ results[keys] }}</td></tr>
+{% endif %}
+{% endfor %}
+</table>
+</center>
+{% endif %}
+
+<div class="options_nmap_wrapper">
+    <div class="options_nmap container">
+        <i class="fas fa-times" onClick="toggleOptions('.options_nmap_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Nmap options</h2>
+            </div>
+        </div>
+        <form action="{{ url_for('dashboard_page') }}" method="POST">
+            <div class="form-group">
+                <label for="port" class="label">Port</label>
+                <input type="text" name="port" class="form-control" id="port" aria-describedby="Port" placeholder="E.g - 127.0.0.1">
+            </div>
+            <label class="label">Select type of scan</label><br />
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="1">
+                <label class="form-check-label label" for="inlineRadio1">Synack Scan</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="2">
+                <label class="form-check-label label" for="inlineRadio1">UDP Scan</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="3">
+                <label class="form-check-label label" for="inlineRadio2">Comp Scan</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="4">
+                <label class="form-check-label label" for="inlineRadio2">Reg Scan</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="5">
+                <label class="form-check-label label" for="inlineRadio2">Ping Scan</label>
+            </div><br/>
+            <button type="submit" class="btn btn-success mx-auto mt-2 d-block mb-2" name="nmap" value="sub">SUBMIT</button>
+
+        </form>
+    </div>
+</div>
+<script>
+    const toggleOptions = (element) => {
+        const ele = document.querySelector(element);
+        if (ele.style.display === "") {
+            ele.style.display = 'block';
+        }
+        else {
+            ele.style.display = "";
+        }
+    }
+</script>
 {% endblock %}
