@@ -1,9 +1,10 @@
-from Nikto.utils.vulnerability_scanner import vulscan
+from project_tools.tools.FlaskNikto.Nikto.utils.vulnerability_scanner import vulscan
 from flask import request, jsonify
 
 
 def index4():
-    body = request.get_json()
+    body = request.form["port"]
     print(body)
-    res = vulscan(body.get('hostname'))
-    return jsonify(res)
+    res = vulscan(body)
+    print(res)
+    return res

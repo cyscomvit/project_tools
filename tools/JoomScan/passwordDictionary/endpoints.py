@@ -1,8 +1,12 @@
-from Joomscan.passwordDictionary.utils.main import Joomscan
-from flask import request, jsonify
+from project_tools.tools.JoomScan.passwordDictionary.utils.main import Joomscan
+from flask import request, jsonify, json
 
 def index2():
-    body = request.get_json()
-    print(body)
-    res = Joomscan(body.get('a'))
-    return jsonify(res)
+    
+    body1 = request.form.get('a')
+    print(body1)
+    #print(body1)
+    #a='www.google.com'
+    res = Joomscan(body1)
+    return res
+    #return jsonify(res)

@@ -1,4 +1,4 @@
-from JoomScan.passwordDictionary.utils.parser import parse
+from project_tools.tools.JoomScan.passwordDictionary.utils.parser import parse
 import sys
 import http.client
 import requests
@@ -6,11 +6,12 @@ import argparse
 from bs4 import BeautifulSoup
 import threading
 import time
+import os
 pwd = ["password","123456","admin"]
-def load_component():
-    with open("comptotestdb.txt", "r") as f:
-        for line in f:
-            dbarray.append(line[:-1]) if line[-1] == "\n" else dbarray.append(line)
+# def load_component():
+#     with open('comptotestdb.txt') as f:
+#         for line in f:
+#             dbarray.append(line[:-1]) if line[-1] == "\n" else dbarray.append(line)
 
 
 def check_url(url, path="/"):
@@ -22,7 +23,7 @@ def check_url(url, path="/"):
         else:
             return 404
     except StandardError:
-        return None
+        return "hello"
 
 
 def check_url_head_content_length(url, path="/"):
@@ -31,7 +32,7 @@ def check_url_head_content_length(url, path="/"):
         conn = requests.head(fullurl, headers=useragentdesktop, timeout=timeoutconnection)
         return conn.headers["content-length"]
     except StandardError:
-        return None
+        return "hello"
 
 
 def check_readme(url, component):
@@ -210,10 +211,11 @@ def scanner(url, component):
 
 
 
-def Joomscan(a):
-	load_component()
+def Joomscan(url):
+	#load_component()
 
-	hello()
+	#hello()
+    #print("hey")
 
 	try:
 		parser = argparse.ArgumentParser()
@@ -230,7 +232,7 @@ def Joomscan(a):
 		url = arguments.url
 		if url[:8] != "https://" and url[:7] != "http://":
 			print("You must insert http:// or https:// procotol\n")
-			sys.exit(1)
+			#sys.exit(1)
 
 
 		if url[-1:] is "/":
@@ -238,7 +240,7 @@ def Joomscan(a):
 	else:
 		print("")
 		parser.parse_args(["-h"])
-		sys.exit(1)
+		#sys.exit(1)
 
 	concurrentthreads = 10
 	global pool
@@ -280,6 +282,7 @@ def Joomscan(a):
 	else:
 		print("Site Down, check url please...")
 
+    
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

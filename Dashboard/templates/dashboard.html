@@ -13,46 +13,158 @@ Tools page
         </tr>
     </thead>
     <tbody>
-        {% for item in items %}
+        <!-- {% for item in items %}
         <tr>
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
             <td>
                 <button class="btn btn-outline btn-info">More inofo</button>
-                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_nmap_wrapper')">Access
+                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_nmap_wrapper',{{ item.id }})">Access
                     item</button>
 
             </td>
         </tr>
-        {% endfor %}
+        {% endfor %} -->
+        <tr>
+            <td>1</td>
+            <td>Nmap</td>
+            <td>
+                <button class="btn btn-outline btn-info" onClick="toggleOptions('.moreinfo_nmap_wrapper')">More info</button>
+                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_nmap_wrapper')">Access
+                    item</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Traceroute</td>
+            <td>
+                <button class="btn btn-outline btn-info" onClick="toggleOptions('.moreinfo_traceroute_wrapper')">More info</button>
+                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_traceroute_wrapper')">Access item</button>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Nikto</td>
+            <td>
+                <button class="btn btn-outline btn-info" onClick="toggleOptions('.moreinfo_nikto_wrapper')">More info</button>
+                <button class="btn btn-outline btn-success" onClick="toggleOptions('.options_nikto_wrapper')">Access
+                    item</button>
+            </td>
+        </tr>
     </tbody>
 </table>
 {% if show==True %}
 <b> Dictionary output </b><br>
 <code>{{ results | safe }}</code>
 <center>
-<b>Table output</b>
-<table border="1">
-  <colgroup>
-    <col style="background-color:#00CED1">
-    <col style="background-color:#4CC417">
-  </colgroup>
-{% for keys in results %}
-{%  if results[keys] is mapping %}
-<tr><td>{{  keys }}</td>
-<td>{{ fun(results[keys],"") | safe }}</td></tr>
-<!---<td>{{ results[keys] | safe }}</td></tr>--->
-{% else %}
-<tr><td>{{ keys }} </td>
-<td>{{ results[keys] }}</td></tr>
-{% endif %}
-{% endfor %}
-</table>
+    <b>Table output</b>
+    <table border="1">
+        <colgroup>
+            <col style="background-color:#00CED1">
+            <col style="background-color:#4CC417">
+        </colgroup>
+        {% for keys in results %}
+        {% if results[keys] is mapping %}
+        <tr>
+            <td>{{ keys }}</td>
+            <td>{{ fun(results[keys],"") | safe }}</td>
+        </tr>
+        <!---<td>{{ results[keys] | safe }}</td></tr>--->
+        {% else %}
+        <tr>
+            <td>{{ keys }} </td>
+            <td>{{ results[keys] }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
 </center>
 {% endif %}
 
+<div class="moreinfo_nmap_wrapper" >
+    <div class="moreinfo_nmap container" style="position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 460px;
+    background-color: white;
+    border-radius: 5px;">
+        <i class="fas fa-times" onClick="toggleOptions('.moreinfo_nmap_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Nmap</h2>
+            </div>
+        </div>
+        <div>
+            <p>Nmap (Network Mapper) is a free and open-source network scanner. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing the responses. To leran more on nmap click <a href="https://nmap.org/"target="_blank" rel="noopener noreferrer">here</a><br><br>
+                <b>UDP Scan :</b>  UDP scan works by sending a UDP packet to every targeted port. For most ports, this packet will be empty (no payload), but for a few of the more common ports a protocol-specific payload will be sent.
+                For more info click <a href="https://nmap.org/book/scan-methods-udp-scan.html"target="_blank" rel="noopener noreferrer">here</a><br><br>
+                <b>Reg Scan :</b> By default nmap performs a standard scan if no options are given, except the target ip. This scan will provide the basic info, ip status , protocols and open ports related to the host ip.<br><br>
+                <b>Ping Scan :</b>  Nmap sends an ICMP type 8 (echo request) packet to the target IP addresses, expecting a type 0(echo reply) in return from available hosts. This scan will show if the host is up or not.<br></p>
+        </div>
+    </div>
+</div>
+
+<div class="moreinfo_traceroute_wrapper" >
+    <div class="moreinfo_traceroute container" style="position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 220px;
+    background-color: white;
+    border-radius: 5px;">
+        <i class="fas fa-times" onClick="toggleOptions('.moreinfo_traceroute_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Traceroute</h2>
+            </div>
+        </div>
+        <div>
+            <p>Traceroute is a network diagnostic tool used to track in real-time the pathway taken by a packet on an IP network from source to destination, reporting the IP addresses of all the routers it pinged in between. Traceroute also records the time taken for each hop the packet makes during its route to the destination.<br> For more info click <a href="https://linuxconfig.org/traceroute-basics"target="_blank" rel="noopener noreferrer">here</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="moreinfo_nikto_wrapper" >
+    <div class="moreinfo_nikto container" style="position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    border-radius: 5px;">
+        <i class="fas fa-times" onClick="toggleOptions('.moreinfo_nikto_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Nikto</h2>
+            </div>
+        </div>
+        <div>
+            <p>Nikto is an Open Source software written in Perl language that is used to scan a web-server for the vulnerability that can be exploited and can compromise the server. It can also check for outdated version details of 1250 server and can detect problems with specific version details of over 270 severs.<br> Nikto is not designed to be a particularly stealth tool rather than it is designed to be fast and time-efficient to achieve the task in very little time. Because of this, a web admin can easily detect that its server is being scanned by looking into the log files.<br>For more info click <a href="https://tools.kali.org/information-gathering/nikto"target="_blank" rel="noopener noreferrer">here</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 <div class="options_nmap_wrapper">
-    <div class="options_nmap container">
+    <div class="options_nmap container" style="position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 320px;
+  background-color: white;
+  border-radius: 5px">
         <i class="fas fa-times" onClick="toggleOptions('.options_nmap_wrapper')"></i>
         <div class="row">
             <div class="col-12 mt-2">
@@ -61,39 +173,97 @@ Tools page
         </div>
         <form action="{{ url_for('dashboard_page') }}" method="POST">
             <div class="form-group">
-                <label for="port" class="label">Port</label>
+                <label for="port" class="label">IP Adress</label>
+                <input type="text" name="port" class="form-control" id="port" aria-describedby="Port"
+                    placeholder="E.g - 127.0.0.1">
+            </div>
+            <div class="list">
+                <label class="label">Select type of scan</label><br />
+                <!--<div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="1">
+                    <label class="form-check-label label" for="inlineRadio1">Synack Scan</label>
+                </div>--->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="2">
+                    <label class="form-check-label label" for="inlineRadio1">UDP Scan</label>
+                </div>
+                <!---<div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="3">
+                    <label class="form-check-label label" for="inlineRadio2">Comp Scan</label>
+                </div>--->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="4">
+                    <label class="form-check-label label" for="inlineRadio2">Reg Scan</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="5">
+                    <label class="form-check-label label" for="inlineRadio2">Ping Scan</label>
+                </div><br />
+            </div>
+            <button type="submit" id="nmap" class="btn btn-success mx-auto mt-2 d-block mb-2" name="nmap"
+                value="sub">SUBMIT</button>
+
+        </form>
+    </div>
+</div>
+
+<div class="options_traceroute_wrapper">
+    <div class="options_traceroute container" id="tr" style="position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 240px;
+    background-color: white;
+    border-radius: 5px;">
+        <!--Style wasn't working from the css file, hence inline styling is used-->
+        <i class="fas fa-times" onClick="toggleOptions('.options_traceroute_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Traceroute options</h2>
+            </div>
+        </div>
+        <form action="{{ url_for('dashboard_page') }}" method="POST">
+            <div class="form-group">
+                <label for="port" class="label">IP Adress</label>
                 <input type="text" name="port" class="form-control" id="port" aria-describedby="Port" placeholder="E.g - 127.0.0.1">
             </div>
-            <label class="label">Select type of scan</label><br />
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="1">
-                <label class="form-check-label label" for="inlineRadio1">Synack Scan</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="2">
-                <label class="form-check-label label" for="inlineRadio1">UDP Scan</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="3">
-                <label class="form-check-label label" for="inlineRadio2">Comp Scan</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="4">
-                <label class="form-check-label label" for="inlineRadio2">Reg Scan</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="5">
-                <label class="form-check-label label" for="inlineRadio2">Ping Scan</label>
-            </div><br/>
-            <button type="submit" class="btn btn-success mx-auto mt-2 d-block mb-2" name="nmap" value="sub">SUBMIT</button>
+            <button type="submit" id="traceroute" class="btn btn-success mx-auto mt-2 d-block mb-2" name="traceroute"
+                value="sub">SUBMIT</button>
 
+        </form>
+    </div>
+</div>
+<div class="options_nikto_wrapper">
+    <div class="options_nikto container" style="  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 240px;
+    background-color: white;
+    border-radius: 5px;">
+        <i class="fas fa-times" onClick="toggleOptions('.options_nikto_wrapper')"></i>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <h2 class="heading">Nikto options</h2>
+            </div>
+        </div>
+        <form action="{{ url_for('dashboard_page') }}" method="POST">
+            <div class="form-group">
+                <label for="port" class="label">Website link</label>
+                <input type="text" name="port" class="form-control" id="port" aria-describedby="Port" placeholder="E.g - https://www.google.com">
+            </div>
+
+            <button type="submit" id="nikto" class="btn btn-success mx-auto mt-2 d-block mb-2" name="nikto" value="sub">SUBMIT</button>
         </form>
     </div>
 </div>
 <script>
     const toggleOptions = (element) => {
         const ele = document.querySelector(element);
-        if (ele.style.display === "") {
+        console.log(ele)
+        if (ele.style.display == "") {
             ele.style.display = 'block';
         }
         else {

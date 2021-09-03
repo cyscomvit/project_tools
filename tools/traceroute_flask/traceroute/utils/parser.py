@@ -2,7 +2,8 @@ import validators
 import socket 
 def parse(input):
     try:
-        socket.inet_aton(input)
+        print(input, "hello")
+        socket.inet_aton(str(input))
         # legal
         return {"status":True}
     except socket.error:

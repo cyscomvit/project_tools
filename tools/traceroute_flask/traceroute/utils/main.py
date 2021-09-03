@@ -1,6 +1,7 @@
-from traceroute.utils.parser import parse
+from project_tools.tools.traceroute_flask.traceroute.utils.parser import parse
 from scapy.all import ICMP,sr1,IP
 def traceroute(hostname):
+    print(hostname)
     res=parse(hostname)
     if not res.get("status"):
         return {"status":"Error","payload": res.get("error")} 

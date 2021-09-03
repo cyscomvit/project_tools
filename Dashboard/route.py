@@ -6,6 +6,9 @@ from project_tools.Dashboard import db
 from project_tools.tools.nmap.main import nmap_route
 from flask_login import login_user
 import json
+#from project_tools.tools.JoomScan.passwordDictionary.endpoints import index2
+from project_tools.tools.traceroute_flask.traceroute.endpoints import index3
+from project_tools.tools.FlaskNikto.Nikto.endpoints import index4
 
 
 def table(dic,stri):
@@ -48,10 +51,21 @@ def dashboard_page():
     result={}
     show=False
     if request.method=="POST":
-        if request.form["nmap"]=="sub":
+        if request.form.get("nmap"):
             result = nmap_route()
             show=True  
             print(result)
+        elif request.form.get("traceroute"):
+            result = index3()
+            show=True  
+            print(result)
+        elif request.form.get("nikto"):
+            result = index4()
+            show=True  
+            if(result==None):
+                result={"Status":"Success"}
+            print(result)
+
     return render_template('dashboard.html',items=items,results=result,show=show,fun=table)
 
 @app.route('/register',methods=['GET','POST'])
@@ -93,4 +107,20 @@ def nmapexec():
     print('called!')
     
     print(res)
-    return redirect(url_for('dashboard_page',result=res))'''
+    return redirect(url_for('dashboard_page',result=res))
+
+@app.route('/Traceroute',methods=['POST', 'GET'])
+def tr():
+    print("called!")
+    
+    res = index3()
+    print(res)
+    return redirect(url_for('dashboard_page'))
+
+@app.route('/Nikto',methods=['POST', 'GET'])
+def nk():
+    print("called!")
+    
+    res = index4()
+    print(res)
+    return redirect(url_for('dashboard_page'))'''

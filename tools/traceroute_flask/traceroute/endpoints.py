@@ -1,9 +1,13 @@
-from traceroute.utils.main import traceroute
+from project_tools.tools.traceroute_flask.traceroute.utils.main import traceroute
+
+
 from flask import request, jsonify
 
 
 def index3():
-    body = request.get_json()
+    print("hi")
+    body = request.form["port"]
+    print("hi")
     print(body)
-    result = traceroute(body.get('hostname'))
-    return jsonify(res)
+    result = traceroute(body)
+    return result

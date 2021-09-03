@@ -1,4 +1,4 @@
-.options_nmap_wrapper {
+.options_nmap_wrapper , .moreinfo_nmap_wrapper{
   height: 100%;
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
   position: absolute;
@@ -11,7 +11,84 @@
   display: none;
   color: black;
 }
+
+.moreinfo_traceroute_wrapper, .moreinfo_nikto_wrapper{
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  color: black;
+}
+
+.options_traceroute_wrapper{
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  color: black;
+}
+.options_nikto_wrapper {
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  color: black;
+}
+
+}
 .options_nmap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 320px;
+  background-color: white;
+  border-radius: 5px;
+}
+.moreinfo_nmap_wrapper{
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  color: black;  
+}
+
+#tr {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 320px;
+  background-color: white;
+  border-radius: 5px;
+}
+.options_nikto {
   position: fixed;
   top: 50%;
   left: 50%;
