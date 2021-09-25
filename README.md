@@ -5,7 +5,7 @@ Project Tools is one such project which consists of set of valuable and intrigui
 
 ## Tools Avilable
 1. Nmap - It is used to discover hosts and services on a computer network by sending packets and analyzing the responses.
-2. Traceroot - It is a network diagnostic tool used to track in real-time the pathway taken by a packet on an IP network from source to destination, reporting the IP addresses of all the routers it pinged in between.
+2. Traceroute - It is a network diagnostic tool used to track in real-time the pathway taken by a packet on an IP network from source to destination, reporting the IP addresses of all the routers it pinged in between.
 3. Nikto - It is web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers.
 
 Tool Details have been provided in "More Info secton" of a particular tool.
