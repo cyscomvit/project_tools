@@ -3,7 +3,7 @@ We live in a world where we are bombarded with different scenarios and projects 
 
 Project Tools is one such project which consists of set of valuable and intriguing tools made exclusively for people interested in cyber security. It’s a fast-paced and always changing environment but we have the right tools for the job. Looking to begin your journey as a cybersecurity expert?? Don't worry, we've got you covered. The key is not a technical background, but your willingness and desire to learn how technology works and to never stop playing. Come on, let's go on an adventure together.
 
-## Tools Avilable
+## Tools Available
 1. Nmap - It is used to discover hosts and services on a computer network by sending packets and analyzing the responses.
 2. Traceroute - It is a network diagnostic tool used to track in real-time the pathway taken by a packet on an IP network from source to destination, reporting the IP addresses of all the routers it pinged in between.
 3. Nikto - It is web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers.
