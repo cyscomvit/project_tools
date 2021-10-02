@@ -13,15 +13,20 @@ Tool Details have been provided in "More Info secton" of a particular tool.
 ## Notes
 1. This application requires nmap map installed in your local system.
 2. Clone the application in your system and run you need to run it as administrator(windows)/super user(linux).
+3. You need pipenv library installed on your system.
 
-## Steps
+## Steps for Standard Installation
 Command Line (as administrator(windows)/super user(linux):
 1. cd project_tools
-2. source bin/activate 
-3. pip install -r requirements.txt 
+2. pipenv install
 4. cd Dashboard
 5. export FLASK_APP = run
-6. flask run
+6. pipenv run flask run
 
+Results are obtained in terminal/command line.
 
-Results are obtained in terminal/command line. 
+##Steps for Docker Installation
+1. cd project_tools
+2. docker build -t project_tools .
+3. docker run -itd -p 5000:5000 project_tools
+Open up your browser at http://localhost:5000/ You should see the Project tools home page.
