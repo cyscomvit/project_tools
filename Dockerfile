@@ -7,5 +7,5 @@ RUN pip3 install pipenv
 RUN cd /root/project_tools && pipenv install
 RUN cd /root/project_tools/Dashboard
 RUN export FLASK_APP=run
-EXPOSE 5000
 CMD /root/project_tools/startup.sh
+EXPOSE 5000
