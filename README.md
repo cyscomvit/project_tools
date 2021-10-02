@@ -25,8 +25,9 @@ Command Line (as administrator(windows)/super user(linux):
 
 Results are obtained in terminal/command line.
 
-##Steps for Docker Installation
+## Steps for Docker Installation
 1. cd project_tools
 2. docker build -t project_tools .
 3. docker run -itd -p 5000:5000 project_tools
+
 Open up your browser at http://localhost:5000/ You should see the Project tools home page.
